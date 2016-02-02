@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import RastHeaderMixin from './rast-header-mixin';
+import RastScrollMixin from './rast-scroll-mixin';
 
-var RastPageMixin = Ember.Mixin.create(RastHeaderMixin, {
+var RastPageMixin = Ember.Mixin.create(RastHeaderMixin, RastScrollMixin, {
   resetBodyDeviceClass: function() {
     Ember.$('body').removeClass((index, css) => {
       return (css.match(/device-\w+/g) || []).join(' ');
@@ -43,10 +44,19 @@ var RastPageMixin = Ember.Mixin.create(RastHeaderMixin, {
     }
   },
 
+  scrolled: function () {
+    Ember.$('body.open-header.close-header-on-scroll').removeClass("side-header-open");
+    this.stickyMenu(100);
+    this.logo();
+  },
+
   init() {
     this.onDebouncedDidResize();
     this.responsiveMenuClass();
     this.stickyElements();
+    this.stickyMenu();
+
+    this.bindScrolling();
 
     this.get('resizeService').on("debouncedDidResize", () => {
       this.onDebouncedDidResize();

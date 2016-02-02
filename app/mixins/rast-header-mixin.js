@@ -90,6 +90,98 @@ var RastHeaderMixin = Ember.Mixin.create({
 
       this.logo();
     }
+  },
+
+  stickyMenuClass: function () {
+    let $header = Ember.$("#header"),
+      $headerWrap = Ember.$('#header-wrap'),
+      stickyMenuClasses = $header.attr('data-sticky-class'),
+      newClassesArray;
+
+    if (stickyMenuClasses) {
+      newClassesArray = stickyMenuClasses.split(/ +/);
+    } else {
+      newClassesArray = '';
+    }
+
+    var noOfNewClasses = newClassesArray.length;
+
+    if (noOfNewClasses > 0) {
+      for (var i = 0; i < noOfNewClasses; i++) {
+        if (newClassesArray[i] === 'not-dark') {
+          $header.removeClass('dark');
+          $headerWrap.addClass('not-dark');
+        } else if (newClassesArray[i] === 'dark') {
+          $headerWrap.removeClass('not-dark force-not-dark');
+
+          if (!$header.hasClass(newClassesArray[i])) {
+            $header.addClass(newClassesArray[i]);
+          }
+        } else if (!$header.hasClass(newClassesArray[i])) {
+          $header.addClass(newClassesArray[i]);
+        }
+      }
+    }
+  },
+
+  removeStickyness: function () {
+    let $body = Ember.$("body"),
+      $header = Ember.$("#header"),
+      $headerWrap = Ember.$('#header-wrap'),
+      oldHeaderClasses = $header.attr('class'),
+      oldHeaderWrapClasses = $headerWrap.attr('class'),
+      responsiveMenuClasses = $header.attr('data-responsive-class');
+
+    if ($header.hasClass('sticky-header')) {
+      Ember.$('body:not(.side-header) #header:not(.no-sticky)').removeClass('sticky-header');
+      $header.removeClass().addClass(oldHeaderClasses);
+      $headerWrap.removeClass().addClass(oldHeaderWrapClasses);
+
+      if (!$headerWrap.hasClass('force-not-dark')) {
+        $headerWrap.removeClass('not-dark');
+      }
+
+      // TODO SEMICOLON.slider.swiperSliderMenu();
+      // TODO SEMICOLON.slider.revolutionSliderMenu();
+    }
+
+    if ($header.hasClass('responsive-sticky-header')) {
+      Ember.$('body.sticky-responsive-menu #header').removeClass('responsive-sticky-header');
+    }
+
+    if (($body.hasClass('device-xs') || $body.hasClass('device-xxs') || $body.hasClass('device-sm')) && (typeof responsiveMenuClasses === 'undefined')) {
+      $header.removeClass().addClass(oldHeaderClasses);
+      $headerWrap.removeClass().addClass(oldHeaderWrapClasses);
+
+      if (!$headerWrap.hasClass('force-not-dark')) {
+        $headerWrap.removeClass('not-dark');
+      }
+    }
+  },
+
+  stickyMenu: function (headerOffset) {
+    let $window = Ember.$(window),
+      $body = Ember.$("body"),
+      $headerWrap = Ember.$('#header-wrap');
+
+    if ($window.scrollTop() > headerOffset) {
+      if ($body.hasClass('device-lg') || $body.hasClass('device-md')) {
+        Ember.$('body:not(.side-header) #header:not(.no-sticky)').addClass('sticky-header');
+
+        if (!$headerWrap.hasClass('force-not-dark')) {
+          $headerWrap.removeClass('not-dark');
+        }
+
+        this.stickyMenuClass();
+      } else if ($body.hasClass('device-xs') || $body.hasClass('device-xxs') || $body.hasClass('device-sm')) {
+        if ($body.hasClass('sticky-responsive-menu')) {
+          Ember.$('#header:not(.no-sticky)').addClass('responsive-sticky-header');
+          this.stickyMenuClass();
+        }
+      }
+    } else {
+      this.removeStickyness();
+    }
   }
 });
 
