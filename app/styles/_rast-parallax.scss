@@ -1,0 +1,21 @@
+@import "variables";
+
+.rast-parallax {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: $rast-section-padding-large-vertical;
+  padding-bottom: $rast-section-padding-large-vertical;
+  text-align: center;
+  word-break: break-all;
+}
