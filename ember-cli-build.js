@@ -4,10 +4,9 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    sassOptions: {
-      includePaths: [
-        'bower_components/bootstrap-sass/assets/stylesheets',
-        'bower_components/font-awesome/scss'
+    lessOptions: {
+      paths: [
+        'bower_components/bootstrap/less'
       ]
     }
   });
@@ -25,13 +24,18 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js');
+  //app.import('vendor/plugins.js');
+  //app.import('vendor/functions.js');
 
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.eot', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.svg', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff2', { destDir: 'fonts' });
+
+  app.import('bower_components/superfish/dist/css/superfish.css');
+  app.import('bower_components/superfish/dist/js/hoverIntent.js');
+  app.import('bower_components/superfish/dist/js/superfish.min.js');
 
   return app.toTree(null);
 };

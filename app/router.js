@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('about-us', {
+    path: 'hakkimizda'
+  });
 });
 
 export default Router;

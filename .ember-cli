@@ -8,5 +8,6 @@
   "disableAnalytics": false,
   "port": 80,
   "liveReload": false,
+  "liveReloadPort": 4201,
   "environment": "development"
 }

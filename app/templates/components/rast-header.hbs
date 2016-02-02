@@ -1,0 +1,37 @@
+<header id="header" class="dark sticky-style-2">
+  <div class="container clearfix">
+    <div id="logo">
+      {{#link-to "index" class="standard-logo" data-dark-logo="assets/logo-dark.png"}}
+        <img src="assets/logo.png" alt="RAST Logo">
+      {{/link-to}}
+
+      {{#link-to "index" class="retina-logo" data-dark-logo="assets/logo-dark@2x.png"}}
+        <img src="assets/logo@2x.png" alt="RAST Retina Logo">
+      {{/link-to}}
+    </div>
+
+    <ul class="header-extras">
+      <li>
+        <i class="i-plain icon-email3 nomargin"></i>
+
+        <div class="he-text">
+          Bize Yazın
+          <span>tolga.ustun@rastenerji.com</span>
+        </div>
+      </li>
+
+      <li>
+        <i class="i-plain icon-call nomargin"></i>
+
+        <div class="he-text">
+          Bizi Arayın
+          <span>+905325095005</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div id="header-wrap">
+    {{rast-navbar}}
+  </div>
+</header>
