@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['owl-carousel', 'portfolio-carousel'],
 
-  _initCarousel: function () {
-    var ocPortfolio = Ember.$('.owl-carousel.portfolio-carousel');
+  _initSlider: function () {
+    var ocPortfolio = this.$();
 
     ocPortfolio.owlCarousel({
       margin: 20,
@@ -25,6 +25,6 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    Ember.run.schedule('afterRender', this._initCarousel);
+    Ember.run.schedule('afterRender', this, this._initSlider);
   }
 });

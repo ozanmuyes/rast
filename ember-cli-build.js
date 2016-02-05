@@ -40,5 +40,8 @@ module.exports = function(defaults) {
   app.import('vendor/owlCarousel/assets/owl.carousel.css');
   app.import('vendor/owlCarousel/owl.carousel.min.js');
 
+  app.import('bower_components/Swiper/dist/css/swiper.min.css');
+  app.import('bower_components/Swiper/dist/js/swiper.min.js');
+
   return app.toTree(null);
 };
