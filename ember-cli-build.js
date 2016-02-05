@@ -37,5 +37,8 @@ module.exports = function(defaults) {
   app.import('bower_components/superfish/dist/js/hoverIntent.js');
   app.import('bower_components/superfish/dist/js/superfish.min.js');
 
+  app.import('vendor/owlCarousel/assets/owl.carousel.css');
+  app.import('vendor/owlCarousel/owl.carousel.min.js');
+
   return app.toTree(null);
 };

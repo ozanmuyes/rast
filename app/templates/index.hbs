@@ -1,9 +1,131 @@
-foo
-<br><br><br><br><br><br><br><br><br><br>
-bar
-<br><br><br><br><br><br><br><br><br><br>
-baz
-<br><br><br><br><br><br><br><br><br><br>
-qux
-<br><br><br><br><br><br><br><br><br><br>
-thud
+<div class="section notopmargin notoppadding">
+  <div class="container clearfix">
+    <h2 class="center">Hakkımızda</h2>
+
+    <div id="portfolio" class="portfolio-1 clearfix">
+      <article class="portfolio-item clearfix">
+        <div class="portfolio-image">
+          <img src="assets/images/720x400.jpg" alt="Open Imagination">
+        </div>
+
+        <div class="portfolio-desc">
+          <h3>Open Imagination</h3>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.</p>
+        </div>
+      </article>
+
+      <article class="portfolio-item alt clearfix">
+        <div class="portfolio-image">
+          <img src="assets/images/720x400.jpg" alt="Locked Steel Gate">
+        </div>
+
+        <div class="portfolio-desc">
+          <h3>Locked Steel Gate</h3>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.</p>
+        </div>
+      </article>
+
+      <article class="portfolio-item nobottomborder nobottommargin clearfix">
+        <div class="portfolio-image">
+          <img src="assets/images/720x400.jpg" alt="Mac Sunglasses">
+        </div>
+
+        <div class="portfolio-desc">
+          <h3>Mac Sunglasses</h3>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<div class="section dark notopmargin">
+  <div class="heading-block center nobottomborder nobottommargin">
+    <h2>HİZMETLERİMİZ YAPTIKLARIMIZLA DEĞİL, İSTEKLERİNİZLE SINIRLI</h2>
+  </div>
+</div>
+
+<div class="section notopmargin">
+  <div class="container clearfix">
+    {{#rast-portfolio-preview}}
+      {{! TODO use 'each' helper}}
+      {{rast-portfolio-preview-item}}
+      {{rast-portfolio-preview-item}}
+      {{rast-portfolio-preview-item}}
+      {{rast-portfolio-preview-item}}
+      {{rast-portfolio-preview-item}}
+    {{/rast-portfolio-preview}}
+  </div>
+</div>
+
+<div class="section dark notopmargin">
+  <div class="heading-block center nobottomborder nobottommargin">
+    <h2>BİZİ MÜŞTERİLERİMİZDEN DİNLEYİN</h2>
+  </div>
+</div>
+
+<div class="container col-padding noleftpadding norightpadding clearfix bottommargin">
+  <div class="col_one_third nobottommargin">
+    <div class="feature-box media-box">
+      <div class="fbox-media">
+        <img src="assets/images/clients/1-preview.jpg" alt="Şirket 1" class="grayscale">
+      </div>
+
+      <div class="fbox-desc">
+        <h3>
+          ŞİRKET 1
+          <span class="subtitle">Şirket 1 için yapılan iş</span>
+        </h3>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col_one_third nobottommargin">
+    <div class="feature-box media-box">
+      <div class="fbox-media">
+        <img src="assets/images/clients/2-preview.jpg" alt="Şirket 2" class="grayscale">
+      </div>
+
+      <div class="fbox-desc">
+        <h3>
+          ŞİRKET 2
+          <span class="subtitle">Şirket 2 için yapılan iş</span>
+        </h3>
+
+        <p>Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col_one_third nobottommargin col_last">
+    <div class="feature-box media-box">
+      <div class="fbox-media">
+        <img src="assets/images/clients/3-preview.jpg" alt="Şirket 3" class="grayscale">
+      </div>
+
+      <div class="fbox-desc">
+        <h3>
+          ŞİRKET 3
+          <span class="subtitle">Şirket 3 için yapılan iş</span>
+        </h3>
+
+        <p>Ferre repellat vero sapiente amet vitae quibusdam consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+<a class="button button-full center tright footer-stick">
+  <div class="container clearfix">
+    Bizimle çalışmaya karar verdiyseniz bize
+    <strong>iletişime geçin</strong>
+    <i class="icon-caret-right" style="top:4px;"></i>
+  </div>
+</a>

@@ -4,8 +4,8 @@
 
 
 // Initialize
-@import "variables.less";
-@import "mixins.less";
+@import (reference) "variables";
+@import (reference) "mixins";
 
 
 .dark,
@@ -14,9 +14,13 @@
 .dark h3,
 .dark h4,
 .dark h5,
-.dark h6 { color: #EEE; }
+.dark h6 {
+  color: #EEE;
+}
 
-.dark a:hover { color: #EEE; }
+.dark a:hover {
+  color: #EEE;
+}
 
 body.dark,
 .dark #wrapper,
@@ -26,7 +30,9 @@ body.dark,
 .dark .modal-content,
 .dark .css3-spinner,
 body.dark #side-panel,
-body #side-panel.dark { background-color: #383838; }
+body #side-panel.dark {
+  background-color: #383838;
+}
 
 .dark .css3-spinner > div,
 .dark .css3-spinner-grid-pulse > div,
@@ -42,8 +48,15 @@ body #side-panel.dark { background-color: #383838; }
 .dark .line,
 .dark .double-line { border-top-color: rgba(255,255,255,0.1); }
 
-.dark .section,
+.dark .section {
+  background-color: #383838;
+  border-color: rgba(255, 255, 255, 0.1);
+}
 .section.dark {
+  background-color: #333333;
+  border-color: rgba(255,255,255,0.1);
+}
+.section.darker {
   background-color: #282828;
   border-color: rgba(255,255,255,0.1);
 }
@@ -929,7 +942,7 @@ body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
   color: #CCC;
 }
 
-.dark .owl-carousel.owl-loading { background-image: url('../images/preloader-dark.gif'); }
+.dark .owl-carousel.owl-loading { background-image: url('images/preloader-dark.gif'); }
 
 .dark .owl-theme .owl-controls .owl-nav [class*=owl-] {
   border-color: transparent;
@@ -1015,7 +1028,7 @@ body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
 
 .dark .preloader,
 .dark .preloader2,
-.dark .form-process { background-image: url('../images/preloader-dark.gif'); }
+.dark .form-process { background-image: url('images/preloader-dark.gif'); }
 
 .dark .form-process { background-color: transparent; }
 

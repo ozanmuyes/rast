@@ -3048,8 +3048,9 @@ var SEMICOLON = SEMICOLON || {};
     $textRotaterEl = $('.text-rotater'),
     $cookieNotification = $('#cookie-notification');
 
-  $(document).ready(SEMICOLON.documentOnReady.init);
-  $window.load(SEMICOLON.documentOnLoad.init);
-  $window.on('resize', SEMICOLON.documentOnResize.init);
+  //$(document).ready(SEMICOLON.documentOnReady.init);
+  //$window.load(SEMICOLON.documentOnLoad.init);
+  //$window.on('resize', SEMICOLON.documentOnResize.init);
+  Ember.Logger.info("fin");
 
 })(jQuery);

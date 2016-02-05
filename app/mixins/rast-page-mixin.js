@@ -1,31 +1,36 @@
 import Ember from 'ember';
-import RastHeaderMixin from './rast-header-mixin';
 
-var RastPageMixin = Ember.Mixin.create(RastHeaderMixin, {
-  resetBodyDeviceClass: function() {
+var RastPageMixin = Ember.Mixin.create({
+  lastClassForWidth: "",
+
+  _resetBodyDeviceClass: function() {
     Ember.$('body').removeClass((index, css) => {
       return (css.match(/device-\w+/g) || []).join(' ');
     });
   },
+
   onDebouncedDidResize: function() {
-    let width = window.innerWidth;
+    let width = window.innerWidth,
+      classForWidth;
 
     if (width <= 479) {
-      this.resetBodyDeviceClass();
-      Ember.$('body').addClass("device-xxs");
+      classForWidth = "xxs";
     } else if (width > 479 && width <= 767) {
-      this.resetBodyDeviceClass();
-      Ember.$('body').addClass("device-xs");
+      classForWidth = "xs";
     } else if (width > 767 && width <= 991) {
-      this.resetBodyDeviceClass();
-      Ember.$('body').addClass("device-sm");
+      classForWidth = "sm";
     } else if (width > 991 && width <= 1199) {
-      this.resetBodyDeviceClass();
-      Ember.$('body').addClass("device-md");
+      classForWidth = "md";
     } else {
-      this.resetBodyDeviceClass();
-      Ember.$('body').addClass("device-lg");
+      classForWidth = "lg";
     }
+
+    if (this.lastClassForWidth !== classForWidth) {
+      this._resetBodyDeviceClass();
+      Ember.$('body').addClass(`device-${classForWidth}`);
+    }
+
+    this.lastClassForWidth = classForWidth;
   },
 
   stickyElements: function () {
@@ -45,7 +50,7 @@ var RastPageMixin = Ember.Mixin.create(RastHeaderMixin, {
 
   init() {
     this.onDebouncedDidResize();
-    this.responsiveMenuClass();
+    //RastHeaderMixin.responsiveMenuClass();
     this.stickyElements();
 
     this.get('resizeService').on("debouncedDidResize", () => {
