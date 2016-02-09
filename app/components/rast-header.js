@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import RastHeaderMixin from '../mixins/rast-header-mixin';
 
-export default Ember.Component.extend(RastHeaderMixin, {
+export default Ember.Component.extend({
   _determineLogo: function () {
     let $body = Ember.$("body"),
       $header = Ember.$("#header"),
@@ -59,6 +58,16 @@ export default Ember.Component.extend(RastHeaderMixin, {
   didInsertElement() {
     this._super(...arguments);
 
-    this._determineLogo();
+    Ember.run(() => {
+      SEMICOLON.header.menufunctions();
+      this._determineLogo();
+    });
+
+    Ember.$('#primary-menu-trigger,#overlay-menu-close').on("click", function () {
+      Ember.$('#primary-menu > ul, #primary-menu > div > ul').toggleClass("show");
+      return false;
+    });
+
+    SEMICOLON.header.responsiveMenuClass();
   }
 });

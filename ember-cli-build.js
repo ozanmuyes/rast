@@ -25,7 +25,7 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   //app.import('vendor/plugins.js');
-  //app.import('vendor/functions.js');
+  app.import('vendor/functions.js');
 
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.eot', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.svg', { destDir: 'fonts' });

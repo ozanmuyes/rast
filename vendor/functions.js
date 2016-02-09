@@ -9,54 +9,54 @@ $.fn.doOnce = function (func) {
   return this;
 };
 
-$.extend($.infinitescroll.prototype, {
-  _setup_portfolioinfiniteitemsloader: function infscr_setup_portfolioinfiniteitemsloader() {
-    var opts = this.options,
-      instance = this;
-    // Bind nextSelector link to retrieve
-    $(opts.nextSelector).click(function (e) {
-      if (e.which == 1 && !e.metaKey && !e.shiftKey) {
-        e.preventDefault();
-        instance.retrieve();
-      }
-    });
-    // Define loadingStart to never hide pager
-    instance.options.loading.start = function (opts) {
-      opts.loading.msg
-        .appendTo(opts.loading.selector)
-        .show(opts.loading.speed, function () {
-          instance.beginAjax(opts);
-        });
-    };
-  },
-  _showdonemsg_portfolioinfiniteitemsloader: function infscr_showdonemsg_portfolioinfiniteitemsloader() {
-    var opts = this.options,
-      instance = this;
-    //Do all the usual stuff
-    opts.loading.msg
-      .find('img')
-      .hide()
-      .parent()
-      .find('div').html(opts.loading.finishedMsg).animate({opacity: 1}, 2000, function () {
-      $(this).parent().fadeOut('normal');
-    });
-    //And also hide the navSelector
-    $(opts.navSelector).fadeOut('normal');
-    // user provided callback when done
-    opts.errorCallback.call($(opts.contentSelector)[0], 'done');
-  }
-});
+//$.extend($.infinitescroll.prototype, {
+//  _setup_portfolioinfiniteitemsloader: function infscr_setup_portfolioinfiniteitemsloader() {
+//    var opts = this.options,
+//      instance = this;
+//    // Bind nextSelector link to retrieve
+//    $(opts.nextSelector).click(function (e) {
+//      if (e.which == 1 && !e.metaKey && !e.shiftKey) {
+//        e.preventDefault();
+//        instance.retrieve();
+//      }
+//    });
+//    // Define loadingStart to never hide pager
+//    instance.options.loading.start = function (opts) {
+//      opts.loading.msg
+//        .appendTo(opts.loading.selector)
+//        .show(opts.loading.speed, function () {
+//          instance.beginAjax(opts);
+//        });
+//    }
+//  },
+//  _showdonemsg_portfolioinfiniteitemsloader: function infscr_showdonemsg_portfolioinfiniteitemsloader() {
+//    var opts = this.options,
+//      instance = this;
+//    //Do all the usual stuff
+//    opts.loading.msg
+//      .find('img')
+//      .hide()
+//      .parent()
+//      .find('div').html(opts.loading.finishedMsg).animate({opacity: 1}, 2000, function () {
+//      $(this).parent().fadeOut('normal');
+//    });
+//    //And also hide the navSelector
+//    $(opts.navSelector).fadeOut('normal');
+//    // user provided callback when done
+//    opts.errorCallback.call($(opts.contentSelector)[0], 'done');
+//  }
+//});
 
 (function () {
   var lastTime = 0;
   var vendors = ['ms', 'moz', 'webkit', 'o'];
   for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
     window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-    window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||
-      window[vendors[x] + 'CancelRequestAnimationFrame'];
+    window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame']
+      || window[vendors[x] + 'CancelRequestAnimationFrame'];
   }
 
-  if (!window.requestAnimationFrame) {
+  if (!window.requestAnimationFrame)
     window.requestAnimationFrame = function (callback, element) {
       var currTime = new Date().getTime();
       var timeToCall = Math.max(0, 16 - (currTime - lastTime));
@@ -67,13 +67,11 @@ $.extend($.infinitescroll.prototype, {
       lastTime = currTime + timeToCall;
       return id;
     };
-  }
 
-  if (!window.cancelAnimationFrame) {
+  if (!window.cancelAnimationFrame)
     window.cancelAnimationFrame = function (id) {
       clearTimeout(id);
     };
-  }
 }());
 
 
@@ -129,26 +127,30 @@ var SEMICOLON = SEMICOLON || {};
 
   SEMICOLON.initialize = {
 
+    // Calls from SEMICOLON.documentOnReady
     init: function () {
 
-      SEMICOLON.initialize.responsiveClasses(); // OK
-      SEMICOLON.initialize.imagePreload('.portfolio-item:not(:has(.fslider)) img');
-      SEMICOLON.initialize.stickyElements(); // OK
-      SEMICOLON.initialize.goToTop();
-      SEMICOLON.initialize.fullScreen();
-      SEMICOLON.initialize.verticalMiddle();
-      SEMICOLON.initialize.lightbox();
-      SEMICOLON.initialize.resizeVideos();
-      SEMICOLON.initialize.imageFade();
-      SEMICOLON.initialize.pageTransition();
+      //SEMICOLON.initialize.responsiveClasses();
+
+      // TODO take care
+      //SEMICOLON.initialize.imagePreload('.portfolio-item:not(:has(.fslider)) img');
+      //SEMICOLON.initialize.stickyElements();
+      //SEMICOLON.initialize.goToTop();
+      //SEMICOLON.initialize.fullScreen();
+      //SEMICOLON.initialize.verticalMiddle();
+      //SEMICOLON.initialize.lightbox();
+      //SEMICOLON.initialize.resizeVideos();
+      //SEMICOLON.initialize.imageFade();
+      //SEMICOLON.initialize.pageTransition();
+
       SEMICOLON.initialize.dataResponsiveClasses();
       SEMICOLON.initialize.dataResponsiveHeights();
 
-      $('.fslider').addClass('preloader2');
+      // TODO take care
+      //$('.fslider').addClass('preloader2');
 
     },
 
-    // OK
     responsiveClasses: function () {
       var jRes = jRespond([
         {
@@ -294,7 +296,6 @@ var SEMICOLON = SEMICOLON || {};
       }
     },
 
-    // OK
     stickyElements: function () {
       if ($siStickyEl.length > 0) {
         var siStickyH = $siStickyEl.outerHeight();
@@ -1090,8 +1091,10 @@ var SEMICOLON = SEMICOLON || {};
 
     init: function () {
 
-      SEMICOLON.header.superfish(); // OK
-      SEMICOLON.header.menufunctions();
+      SEMICOLON.header.superfish();
+
+      //SEMICOLON.header.menufunctions();
+
       SEMICOLON.header.fullWidthMenu();
       SEMICOLON.header.overlayMenu();
       SEMICOLON.header.stickyMenu();
@@ -1100,19 +1103,20 @@ var SEMICOLON = SEMICOLON || {};
       SEMICOLON.header.sidePanel();
       SEMICOLON.header.onePageScroll();
       SEMICOLON.header.onepageScroller();
-      SEMICOLON.header.logo(); // OK
+
+      //SEMICOLON.header.logo();
+
       SEMICOLON.header.topsearch();
       SEMICOLON.header.topcart();
 
     },
 
-    // OK
     superfish: function () {
 
       if ($().superfish) {
         if ($body.hasClass('device-lg') || $body.hasClass('device-md')) {
           $('#primary-menu ul ul, #primary-menu ul .mega-menu-content').css('display', 'block');
-          SEMICOLON.header.menuInvert(); // OK
+          SEMICOLON.header.menuInvert();
         }
 
         $('body:not(.side-header) #primary-menu > ul, body:not(.side-header) #primary-menu > div > ul, .top-links > ul').superfish({
@@ -1136,7 +1140,6 @@ var SEMICOLON = SEMICOLON || {};
 
     },
 
-    // OK
     menuInvert: function () {
 
       $('#primary-menu .mega-menu-content, #primary-menu ul ul').each(function (index, element) {
@@ -1381,68 +1384,66 @@ var SEMICOLON = SEMICOLON || {};
       return currentOnePageSection;
     },
 
-    // OK
-    logo: function () {
-      if (( $header.hasClass('dark') || $body.hasClass('dark') ) && !$headerWrap.hasClass('not-dark')) {
-        if (defaultDarkLogo) {
-          defaultLogo.find('img').attr('src', defaultDarkLogo);
-        }
-        if (retinaDarkLogo) {
-          retinaLogo.find('img').attr('src', retinaDarkLogo);
-        }
-      } else {
-        if (defaultLogoImg) {
-          defaultLogo.find('img').attr('src', defaultLogoImg);
-        }
-        if (retinaLogoImg) {
-          retinaLogo.find('img').attr('src', retinaLogoImg);
-        }
-      }
-      if ($header.hasClass('sticky-header')) {
-        if (defaultStickyLogo) {
-          defaultLogo.find('img').attr('src', defaultStickyLogo);
-        }
-        if (retinaStickyLogo) {
-          retinaLogo.find('img').attr('src', retinaStickyLogo);
-        }
-      }
-      if ($body.hasClass('device-xs') || $body.hasClass('device-xxs')) {
-        if (defaultMobileLogo) {
-          defaultLogo.find('img').attr('src', defaultMobileLogo);
-        }
-        if (retinaMobileLogo) {
-          retinaLogo.find('img').attr('src', retinaMobileLogo);
-        }
-      }
-    },
+    //logo: function () {
+    //  if (( $header.hasClass('dark') || $body.hasClass('dark') ) && !$headerWrap.hasClass('not-dark')) {
+    //    if (defaultDarkLogo) {
+    //      defaultLogo.find('img').attr('src', defaultDarkLogo);
+    //    }
+    //    if (retinaDarkLogo) {
+    //      retinaLogo.find('img').attr('src', retinaDarkLogo);
+    //    }
+    //  } else {
+    //    if (defaultLogoImg) {
+    //      defaultLogo.find('img').attr('src', defaultLogoImg);
+    //    }
+    //    if (retinaLogoImg) {
+    //      retinaLogo.find('img').attr('src', retinaLogoImg);
+    //    }
+    //  }
+    //  if ($header.hasClass('sticky-header')) {
+    //    if (defaultStickyLogo) {
+    //      defaultLogo.find('img').attr('src', defaultStickyLogo);
+    //    }
+    //    if (retinaStickyLogo) {
+    //      retinaLogo.find('img').attr('src', retinaStickyLogo);
+    //    }
+    //  }
+    //  if ($body.hasClass('device-xs') || $body.hasClass('device-xxs')) {
+    //    if (defaultMobileLogo) {
+    //      defaultLogo.find('img').attr('src', defaultMobileLogo);
+    //    }
+    //    if (retinaMobileLogo) {
+    //      retinaLogo.find('img').attr('src', retinaMobileLogo);
+    //    }
+    //  }
+    //},
 
-    stickyMenuClass: function () {
-      if (stickyMenuClasses) {
-        var newClassesArray = stickyMenuClasses.split(/ +/);
-      } else {
-        var newClassesArray = '';
-      }
-      var noOfNewClasses = newClassesArray.length;
+    //stickyMenuClass: function () {
+    //  if (stickyMenuClasses) {
+    //    var newClassesArray = stickyMenuClasses.split(/ +/);
+    //  } else {
+    //    var newClassesArray = '';
+    //  }
+    //  var noOfNewClasses = newClassesArray.length;
+    //
+    //  if (noOfNewClasses > 0) {
+    //    var i = 0;
+    //    for (i = 0; i < noOfNewClasses; i++) {
+    //      if (newClassesArray[i] == 'not-dark') {
+    //        $header.removeClass('dark');
+    //        $headerWrap.addClass('not-dark');
+    //      } else if (newClassesArray[i] == 'dark') {
+    //        $headerWrap.removeClass('not-dark force-not-dark');
+    //        if (!$header.hasClass(newClassesArray[i])) {
+    //          $header.addClass(newClassesArray[i]);
+    //        }
+    //      } else if (!$header.hasClass(newClassesArray[i])) {
+    //        $header.addClass(newClassesArray[i]);
+    //      }
+    //    }
+    //  }
+    //},
 
-      if (noOfNewClasses > 0) {
-        var i = 0;
-        for (i = 0; i < noOfNewClasses; i++) {
-          if (newClassesArray[i] == 'not-dark') {
-            $header.removeClass('dark');
-            $headerWrap.addClass('not-dark');
-          } else if (newClassesArray[i] == 'dark') {
-            $headerWrap.removeClass('not-dark force-not-dark');
-            if (!$header.hasClass(newClassesArray[i])) {
-              $header.addClass(newClassesArray[i]);
-            }
-          } else if (!$header.hasClass(newClassesArray[i])) {
-            $header.addClass(newClassesArray[i]);
-          }
-        }
-      }
-    },
-
-    // OK
     responsiveMenuClass: function () {
       if ($body.hasClass('device-xs') || $body.hasClass('device-xxs') || $body.hasClass('device-sm')) {
         if (responsiveMenuClasses) {
@@ -2875,7 +2876,7 @@ var SEMICOLON = SEMICOLON || {};
     init: function () {
 
       var t = setTimeout(function () {
-        SEMICOLON.header.topsocial();
+        //SEMICOLON.header.topsocial();
         SEMICOLON.header.fullWidthMenu();
         SEMICOLON.header.overlayMenu();
         SEMICOLON.initialize.fullScreen();
@@ -2889,8 +2890,8 @@ var SEMICOLON = SEMICOLON || {};
         SEMICOLON.widget.tabsJustify();
         SEMICOLON.widget.html5Video();
         SEMICOLON.widget.masonryThumbs();
-        SEMICOLON.initialize.dataResponsiveClasses();
-        SEMICOLON.initialize.dataResponsiveHeights();
+        //SEMICOLON.initialize.dataResponsiveClasses();
+        //SEMICOLON.initialize.dataResponsiveHeights();
       }, 500);
 
     }
@@ -2901,15 +2902,20 @@ var SEMICOLON = SEMICOLON || {};
 
     init: function () {
       SEMICOLON.initialize.init();
-      SEMICOLON.header.init();
-      if ($slider.length > 0) {
-        SEMICOLON.slider.init();
-      }
-      if ($portfolio.length > 0) {
-        SEMICOLON.portfolio.init();
-      }
-      SEMICOLON.widget.init();
-      SEMICOLON.documentOnReady.windowscroll();
+      //SEMICOLON.header.init();
+      //if ($slider.length > 0) {
+      //  SEMICOLON.slider.init();
+      //}
+
+      // TODO take care
+      //if ($portfolio.length > 0) {
+      //  SEMICOLON.portfolio.init();
+      //}
+
+      //SEMICOLON.widget.init();
+
+      // TODO taken care of but investigate for unsupported features by Ember component
+      //SEMICOLON.documentOnReady.windowscroll();
     },
 
     windowscroll: function () {
@@ -2989,7 +2995,7 @@ var SEMICOLON = SEMICOLON || {};
       SEMICOLON.widget.masonryThumbs();
       SEMICOLON.slider.owlCaptionInit();
       SEMICOLON.header.topsocial();
-      SEMICOLON.header.responsiveMenuClass(); // OK
+      //SEMICOLON.header.responsiveMenuClass();
       SEMICOLON.initialize.modal();
     }
 
@@ -3051,6 +3057,5 @@ var SEMICOLON = SEMICOLON || {};
   //$(document).ready(SEMICOLON.documentOnReady.init);
   //$window.load(SEMICOLON.documentOnLoad.init);
   //$window.on('resize', SEMICOLON.documentOnResize.init);
-  Ember.Logger.info("fin");
 
 })(jQuery);

@@ -31,9 +31,15 @@ var RastPageMixin = Ember.Mixin.create({
     }
 
     this.lastClassForWidth = classForWidth;
+
+    Ember.run(() => {
+      SEMICOLON.header.topsocial();
+      SEMICOLON.initialize.dataResponsiveClasses();
+      SEMICOLON.initialize.dataResponsiveHeights();
+    });
   },
 
-  stickyElements: function () {
+  _stickyElements: function () {
     let $siStickyEl = Ember.$('.si-sticky'),
       $dotsMenuEl = Ember.$('.dots-menu');
 
@@ -51,7 +57,7 @@ var RastPageMixin = Ember.Mixin.create({
   init() {
     this.onDebouncedDidResize();
     //RastHeaderMixin.responsiveMenuClass();
-    this.stickyElements();
+    this._stickyElements();
 
     this.get('resizeService').on("debouncedDidResize", () => {
       this.onDebouncedDidResize();
