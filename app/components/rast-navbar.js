@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import RastScrollMixin from '../mixins/rast-scroll-mixin';
 
-export default Ember.Component.extend(RastScrollMixin, {
+export default Ember.Component.extend({
   menuInvert() {
     let $window = Ember.$(window);
 
@@ -42,7 +41,5 @@ export default Ember.Component.extend(RastScrollMixin, {
       animationOut: {opacity: 'hide', height: 'hide'},
       cssArrows: false
     });
-
-    this.scrollInit();
   }
 });

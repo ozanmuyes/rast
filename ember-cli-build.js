@@ -25,9 +25,7 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   //app.import('vendor/plugins.js');
-  //app.import('vendor/functions.js');
-
-  app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
+  app.import('vendor/functions.js');
 
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.eot', { destDir: 'fonts' });
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.svg', { destDir: 'fonts' });
@@ -39,7 +37,11 @@ module.exports = function(defaults) {
   app.import('bower_components/superfish/dist/js/hoverIntent.js');
   app.import('bower_components/superfish/dist/js/superfish.min.js');
 
-  app.import('vendor/jquery.easing.1.3.js');
+  app.import('vendor/owlCarousel/assets/owl.carousel.css');
+  app.import('vendor/owlCarousel/owl.carousel.min.js');
+
+  app.import('bower_components/Swiper/dist/css/swiper.min.css');
+  app.import('bower_components/Swiper/dist/js/swiper.min.js');
 
   return app.toTree(null);
 };

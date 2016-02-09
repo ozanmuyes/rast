@@ -4,6 +4,8 @@
 
 -----------------------------------------------------------------------------------*/
 
+@import (reference) "variables";
+@import (reference) "mixins";
 
 /* ----------------------------------------------------------------
   Header
@@ -130,7 +132,9 @@ body.stretched #header.full-header .container {
   border-right: 1px solid #EEE;
 }
 
-#header.transparent-header.full-header #logo { border-right-color: rgba(0,0,0,0.1); }
+#header.transparent-header.full-header #logo {
+  border-right-color: rgba(0,0,0,0.1);
+}
 
 
 /* ----------------------------------------------------------------
@@ -164,6 +168,7 @@ body.stretched #header.full-header .container {
       font-size: 14px;
       line-height: 1.43;
 
+      a,
       span {
         display: block;
         font-weight: 400;

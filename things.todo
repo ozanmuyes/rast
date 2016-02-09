@@ -1,0 +1,1 @@
+* Do NOT forget to .off() the initialized components (e.g. rast-portfolio-preview ,rast-swipe-slider etc...)

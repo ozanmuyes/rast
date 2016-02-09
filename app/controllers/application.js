@@ -1,22 +1,19 @@
 import Ember from 'ember';
 import RastPageMixin from '../mixins/rast-page-mixin';
+import ScrollMixin from '../mixins/scroll-mixin';
 
-export default Ember.Controller.extend(RastPageMixin, {
-});
-
-// Extend link-to component to add "data" attributes
-// https://guides.emberjs.com/v2.3.0/templates/binding-element-attributes/#toc_adding-data-attributes
-Ember.LinkComponent.reopen({
+export default Ember.Controller.extend(RastPageMixin, ScrollMixin, {
   init() {
-    this._super();
-    var self = this;
+    // TODO Uncomment the line below to support sticky header
+    //this.bindScrolling();
 
-    // bind attributes beginning with 'data-'
-    Object.keys(this).forEach(function (key) {
-      if (key.substr(0, 5) === 'data-') {
-        self.get('attributeBindings').pushObject(key);
-      }
-    });
+    Ember.run(SEMICOLON.documentOnReady.init);
+  },
+  scroll(direction, pos) {
+    if (direction === "down" && pos >= 144) {
+      Ember.$("header").addClass("sticky-header");
+    } else if (direction === "up" && pos < 144) {
+      Ember.$("header").removeClass("sticky-header");
+    }
   }
 });
-
